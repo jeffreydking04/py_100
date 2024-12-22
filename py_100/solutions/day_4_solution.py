@@ -8,6 +8,10 @@ import math
 
 user_selection = int(input('Choose: Rock (0), Paper(1), Scissors(2)\n'))
 
+if user_selection not in [0, 1, 2]:
+    print('Invalid entry!')
+    quit()
+
 random_computer_selection = math.floor(random.random() * 3)
 
 result = user_selection - random_computer_selection
