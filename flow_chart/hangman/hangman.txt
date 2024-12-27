@@ -8,13 +8,13 @@
 8 step invalid 1
 9 split is_available 10 11
 10 step available 12
-11 step unavailable 1
+11 step unavail 1
 12 split is_correct 13 14
 13 step correct 15
 14 step incorrect 18
 15 split won_game 16 17
 16 end won 0
-17 step did_not_win 1
+17 step no_win 1
 18 split lost_game 19 20
 19 end lost 0
-20 step did_not_lose 1
+20 step no_loss 1
