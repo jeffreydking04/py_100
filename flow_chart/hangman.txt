@@ -1,0 +1,20 @@
+1 start imports 2
+2 step constants 3
+3 step state 4
+4 step display 5
+5 step input 6
+6 split is_valid 7 8
+7 step valid 9
+8 step invalid 1
+9 split is_available 10 11
+10 step available 12
+11 step unavailable 1
+12 split is_correct 13 14
+13 step correct 15
+14 step incorrect 18
+15 split won_game 16 17
+16 end won 0
+17 step did_not_win 1
+18 split lost_game 19 20
+19 end lost 0
+20 step did_not_lose 1

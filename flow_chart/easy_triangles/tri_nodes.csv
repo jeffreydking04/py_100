@@ -1,0 +1,4 @@
+label, x_pos, y_pos 
+Step, 0, 0
+Split, 1, 1
+Step, 1, 0
