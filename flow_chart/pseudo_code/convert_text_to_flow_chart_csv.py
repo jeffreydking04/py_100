@@ -4,7 +4,7 @@ os.system('clear')
 
 
 # Open the file in read mode
-with open('portfolio/flow_chart/hangman.txt', 'r') as file:
+with open('portfolio/flow_chart/hangman/hangman.txt', 'r') as file:
     lines = file.readlines()
 
 
@@ -65,24 +65,82 @@ for node in node_map.values():
                 target_node['y'] = y - 2
             else:
                 target_node['y'] = y + 2
-    
-        nodes_for_csv.append([
-            edge_id, 
-            node['node_type'],
-            node['node_name'],
-            str(node['x']),
-            str(node['y']),
-            '0'
-        ])
-        nodes_for_csv.append([
-            edge_id,
-            target_node['node_type'],
-            target_node['node_name'],
-            str(target_node['x']),
-            str(target_node['y']),
-            '1'
-        ])
-        edge_id += 1
+     
+        # This works fine if we aren't flowing back to a previous node, but need a better route if we aren't.
+        if node['node_id'] < int(target):
+            nodes_for_csv.append([
+                edge_id, 
+                node['node_type'],
+                node['node_name'],
+                str(node['x']),
+                str(node['y']),
+                '0'
+            ])
+            nodes_for_csv.append([
+                edge_id,
+                target_node['node_type'],
+                target_node['node_name'],
+                str(target_node['x']),
+                str(target_node['y']),
+                '1'
+            ])
+            edge_id += 1
+        else:
+            n_x = node['x']
+            n_y = node['y']
+            t_x = target_node['x']
+            t_y = target_node['y']
+            nodes_for_csv.append([
+                edge_id, 
+                node['node_type'],
+                node['node_name'],
+                str(n_x),
+                str(n_y),
+                '0'
+            ])
+            nodes_for_csv.append([
+                edge_id,
+                'guide',
+                '',
+                str(n_x),
+                str(n_y + 1),
+                '1'
+            ])
+            edge_id += 1
+            nodes_for_csv.append([
+                edge_id,
+                'guide',
+                '',
+                str(n_x),
+                str(n_y + 1),
+                '0'
+            ])
+            nodes_for_csv.append([
+                edge_id,
+                'guide',
+                '',
+                str(t_x),
+                str(n_y + 1),
+                '1'
+            ])
+            edge_id += 1
+            nodes_for_csv.append([
+                edge_id,
+                'guide',
+                '',
+                str(t_x),
+                str(n_y + 1),
+                '0'
+            ])
+            nodes_for_csv.append([
+                edge_id,
+                target_node['node_type'],
+                target_node['node_name'],
+                str(t_x),
+                str(t_y),
+                '1'
+            ])
+            edge_id += 1
 
 
 headers = ['edge_id', 'type', 'name', 'x', 'y', 'weight']
