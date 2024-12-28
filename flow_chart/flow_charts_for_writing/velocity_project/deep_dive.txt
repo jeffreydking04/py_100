@@ -1,0 +1,20 @@
+1 start integrity 2
+2 step m_over_mon 3
+3 step blind 4
+4 split issues 5 6
+5 end 09_10 0
+6 step no_col 7
+7 step answerable 8
+8 split dynamic 9 10
+9 end pop_g 0
+10 step migration 11
+11 split og_article 12 13
+12 step snaphot 14
+13 step int_no_col 1 
+14 split differences 15 16
+15 end dynamic_id 0
+16 step mig 17
+17 step v 18
+18 step epiphany 19
+19 split qol 20 
+20 end qualifications 0

@@ -1,0 +1,12 @@
+Immediately thought of a use for the flow chart creator beyond its initial scope.
+Writing. A section can have one main theme, or it can introduce many new ideas to expound on later.
+An intro might be a split or it might be a step.  We can visualize the flow of the text.
+My writing in the past has often been of the variety where I pique the reader's interest early,
+but save my actual thesis for the conclusion.  This theoretically works by connecting the conclusion back to
+the introduction, but even if the 'flow' is more linear than that, we can still visualize a piece of writing with
+a flow chart.
+
+I am not even sure we need to expand the syntax.  If a section has multiple ideas, it is a split with many targets.
+
+I used it and got a great diagram for the Deep Dive on Velocity, but it revealed some distinct flaws.  Creating a
+user interface to create csvs for specific purposes is a great idea, but for now this works.
