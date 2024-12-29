@@ -1,0 +1,21 @@
+1 start start 2
+2 step imports 3
+3 step constants 4
+4 step state 5
+5 step input_encode_decode 6
+7 split is_5_valid 8 9
+8 step 5_valid 10
+9 step 5_invalid 5
+10 step input_message 11
+11 split is_10_valid 12 13
+12 step 10_valid 14
+13 step 10_invalid 10
+14 step input_shift 15
+15 split is_14_valid 16 17
+16 step 14_valid 18
+17 step 14_invalid 14
+18 split e_or_d 19 20
+19 step encode 21
+20 step decode 22
+21 end display_e 0
+22 end display_d 0
