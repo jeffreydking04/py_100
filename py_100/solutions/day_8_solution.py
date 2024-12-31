@@ -1,9 +1,4 @@
-# Day 8: Caesar Cipher Project
-
-# The way Lessons 61 through 65 look structured, Instructor Yu is likely going 
-# to lead us through another 'complicated' project instead of lecturing and then
-# handing us the project, just like hangman.  I will likely just hit the project then watch the 
-# videos and make notes and adjustments.
+# Day 7: Project: Caesar Cypher
 
 import os
 
@@ -26,7 +21,6 @@ def shift_letter(l, shift):
         return small_letters[idx]
     
     idx = (large_letters.index(l) + shift)
-    # because I didn't know you could do this:
     idx %= 26
     return large_letters[idx]
 
@@ -68,7 +62,6 @@ while not user_input() == 'q':
     while not shift.isnumeric():
         print_invalid_input()
         shift = get_shift()
-    print('The encoded message is:', encode_message(shift if mode == 'encode' else -int(shift)))
+    print(f'The {mode}d message is:', encode_message(shift if mode == 'encode' else -int(shift)))
     input('Enter any key to continue: \n\n')
     os.system('clear')
-
