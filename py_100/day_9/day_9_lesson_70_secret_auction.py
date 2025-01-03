@@ -1,4 +1,4 @@
-# Day 8 Lesson 70: Secret Auction
+# Day 9 Lesson 70: Secret Auction
 
 import os
 
