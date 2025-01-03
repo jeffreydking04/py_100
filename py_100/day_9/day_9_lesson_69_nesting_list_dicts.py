@@ -1,4 +1,4 @@
-# Day 8 Lesson 69: Nesting Lists and Dictionaries
+# Day 9 Lesson 69: Nesting Lists and Dictionaries
 
 capitals = {
     'France': 'Paris',

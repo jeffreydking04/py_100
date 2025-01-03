@@ -1,4 +1,4 @@
-# Day 8 Lesson 68: Dictionary: Deep Dive
+# Day 9 Lesson 68: Dictionary: Deep Dive
 
 # Key/Values
 # Nice, you can add a comma at the end of every k/v 
