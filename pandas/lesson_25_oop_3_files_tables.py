@@ -1,11 +1,13 @@
-# This is lesson 24 from Henrick Johansson's Master Pandas and Python for Data Handling
+# This is lesson 25 from Henrick Johansson's Master Pandas and Python for Data Handling
 
-# Python Object Oriented Programming II: Create your own custom objects.
+# Python Object Oriented Programming III: Files and Tables
 
 # Libraries
 import pickle
+import csv
+import pandas as pd
+from openpyxl import workbook
 
-# Remember the Mailcat example from the Dictionary video lecture? We will reuse the Mailcat.
 class Mailcat_object():
     def __init__(self, id_name, mail_address, list_items=[]): # This function creates an instance of the class
         self.idnum: int # We will use this as an id-number
@@ -61,24 +63,51 @@ class create_catalog():
             ret_list.append(mail_string.split(' '))
         return ret_list
 
-# Let's start the catalog and show how to make the catalog object serializable for file storage and analyzable with standard
-# programs and libraries expecting tabular or column data
-
-Mail_c = create_catalog()
-Mail_c.list_Mailcat_objects()
-
-# Joe joe.joe@gmail.com [1200, 99.3, 0, 0.0, 'value', 'compl%']
-# Anand anand.anand@aol.com [1300, 75.3, 4, 33.3, 'value', 'compl%', 'Time_c', 'answ%']
-# Lisa lisa@gmx.com [2400, 45.5, 0, 0.0, 'value', 'compl%']
-# Mohammed mohammed@gmail.com [1700, 82.3, 0, 0.0, 'value', 'compl%']
-
-# The pickle module implements binary protocols for serializing nad de-serializing Python object structures
-file = open('pandas/Mail_c.obj', 'wb')
-pickle.dump(Mail_c, file)
-file.close()
-del Mail_c
-
+# We begin by loading our Mail catalog from our pickle file
 file = open('pandas/Mail_c.obj', 'rb')
 Mail_c = pickle.load(file)
 file.close()
 Mail_c.list_Mailcat_objects()
+
+# Let's begin by 'flattening' our objects into strings on the tabular form and create a .csv file (comma seperated file)
+Mail_c2 = Mail_c.serialize_Mailcat_objects()
+print(Mail_c2)
+for item in Mail_c2:
+    print(item)
+
+# Opening a csv file in write mode
+with open('pandas/mail_cat.csv', 'w', newline='') as csvfile:
+    # use csv.writer to write the list ot the csv file
+    writer = csv.writer(csvfile)
+    writer.writerows(Mail_c2) # use writerow for a list of single strings and writerows for a list of lists
+# The file closes after finishing the with code block.
+# This .csv flie has a tabular form, and is useful for direct use with most libraries and programs.
+# This code shows how to convert this .csv file to an Excel workbook, and how to load the .csv file into a Pandas DataFrame
+
+# Let's begin with Excel, which is the main data storage standard for everyday home or business data, with an estimated 100
+# to 500 million unique users.
+
+csv_temp = [] # temporary storage
+with open('pandas/mail_cat.csv', 'r', newline='') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        csv_temp.append(row)
+    
+workbook = workbook.Workbook() # Create a new workbook
+sheet = workbook.active # Sets the sheet as active sheet in the workbook
+for row in csv_temp:
+    sheet.append(row)
+workbook.save('pandas/mail_cat.xslx')
+
+# Print the Excel document file using the the openpyxl library
+for row in sheet.iter_rows():
+    row_list = []
+    for cell in row:
+        row_list.append(str(cell.value) + ' ')
+    print(row_list)
+
+# We can load our .csv file into a Pandas DataFrame for use with Pandas.  Pandas is a Python library with a very large user base
+# estimated at 5-10 million users. Pandas is considered to be an Excel spreadsheet with extende+++++ capabilities for data science
+# and all types of machine learning.
+Mailcat_DataFrame = pd.read_csv('pandas/mail_cat.csv', delimiter=',')
+print(Mailcat_DataFrame)
