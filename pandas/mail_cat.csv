@@ -1,0 +1,5 @@
+Name,mail_address,integer1,float1,integer2,float2,string1,string2,string3,string4
+Joe,joe.joe@gmail.com,1200,99.3,0,0.0,value,compl%
+Anand,anand.anand@aol.com,1300,75.3,4,33.3,value,compl%,Time_c,answ%
+Lisa,lisa@gmx.com,2400,45.5,0,0.0,value,compl%
+Mohammed,mohammed@gmail.com,1700,82.3,0,0.0,value,compl%
